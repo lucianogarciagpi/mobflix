@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobflix_challenge/theme.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -10,10 +11,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  final theme = mobflixTheme();
+
     return MaterialApp(
       title: 'MobFlix',
-      theme: tema,
-      home: const MyHomePage(title: 'MOBFLIX'),
+      theme: mobflixTheme.dark(),
+      home: MyHomePage(title: 'MOBFLIX'),
     );
   }
 }
@@ -32,8 +35,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         centerTitle: true,
-        title: Text(widget.title),
+        title: Text(widget.title, style: Theme.of(context).appBarTheme.titleTextStyle),
       ),
       body: SafeArea(
         child: ListView(
