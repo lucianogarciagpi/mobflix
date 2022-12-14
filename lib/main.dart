@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobflix_challenge/components/home/card_mobile1.dart';
-import 'package:mobflix_challenge/theme.dart';
+import 'package:mobflix_challenge/screens/video_registration_screen.dart';
+import 'package:mobflix_challenge/themes/my_theme.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -12,13 +12,15 @@ class MobFlixApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = mobflixTheme();
 
     return MaterialApp(
       title: 'MobFlix',
-      theme: mobflixTheme.dark(),
-      home: MyHomePage('MOBFLIX'),
+      theme: Mytheme,
+      initialRoute: "/home",
+      routes: {
+        "/home": (context) => const MyHomePage(),
+        "/videoRegistration": (context) => const VideoRegistrationScreen(),
+      },
     );
   }
 }
-
