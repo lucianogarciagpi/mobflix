@@ -1,34 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:mobflix_challenge/components/components.dart';
+import 'package:mobflix_challenge/data/video_provider.dart';
 
-class ListViewCards extends StatelessWidget {
+class ListViewCards extends StatefulWidget {
   const ListViewCards({Key? key}) : super(key: key);
 
   @override
+  State<ListViewCards> createState() => _ListViewCardsState();
+}
+
+class _ListViewCardsState extends State<ListViewCards> {
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.only(top: 28),
-        child: SingleChildScrollView(
-          child: Column(
-            children: const [
-              CardCategory(
-                category: 'Mobile',
-                color: Color.fromRGBO(216, 45, 45, 1.0),
-                image: 'assets/images/card1.png',
-              ),
-              CardCategory(
-                category: 'Mobile',
-                color: Color.fromRGBO(216, 45, 45, 1.0),
-                image: 'assets/images/card2.png',
-              ),
-              CardCategory(
-                category: 'Mobile',
-                color: Color.fromRGBO(216, 45, 45, 1.0),
-                image: 'assets/images/card3.png',
-              ),
-            ],
-          ),
-        ));
+    return VideoProvider(
+      child: Scaffold(
+        body: ListView(
+          // padding: const EdgeInsets.only(top: 10, bottom: 70),
+          children: VideoProvider.of(context).videoList,
+        ),
+      ),
+    );
   }
 }
 
